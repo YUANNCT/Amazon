@@ -1,0 +1,22 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/tagbar1/tagbar1",
+    "pages/tagbar2/tagbar2"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#303133",
+    "navigationBarTitleText": "亚马逊计算器",
+    "navigationBarTextStyle":"white"
+  },
+  "usingComponents": {
+    "mp-icon": "weui-miniprogram/icon/icon",
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-form": "weui-miniprogram/form/form",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

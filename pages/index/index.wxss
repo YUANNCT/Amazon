@@ -1,0 +1,35 @@
+/**index.wxss**/
+.inbox{
+  width: 720rpx;
+  /* height: 800rpx; */
+}
+/* .outbox{
+  width: 350rpx;
+  height: 600rpx;
+  background-color: #909399;
+  display: inline-block;
+} */
+.buttongroup{
+  width: 720rpx;
+  /* height: 300rpx; */
+}
+.calculate{
+  margin-bottom: 20rpx;
+}
+.tabbar{
+  width: 720rpx;
+  height: 30px;
+  background-color: #909399;
+  position: absolute;
+  bottom: 20rpx;
+  left: 15rpx;
+}
+.home{
+  margin:0 58px;
+}
+.copy{
+  margin-right:58px;
+}
+.photo{
+  margin-right:58px;
+}
