@@ -46,42 +46,81 @@ Component({
       })
     },
     submit: function(e){
-      if(this.weightIndex == 0){
-        if(this.transportIndex == 0){
-          this.needCost = e.detail.cost*e.detail.quantity+e.detail.quantity*10*e.detail.fit;
-          this.profit = e.detail.price*e.detail.quantity*e.detail.rate - (e.detail.cost*e.detail.quantity+e.detail.quantity*10*e.detail.fit) - e.detail.rate*3.7;
+      console.log(e.detail.value);
+      console.log(e.detail.value.cost);
+      console.log(this.data.weightIndex);
+      if(this.data.weightIndex == 0){
+        if(this.data.transportIndex == 0){
+          this.setData({
+            needCost : e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*10*e.detail.value.fit,
+            profit : e.detail.value.price*e.detail.value.quantity*e.detail.value.rate - (e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*10*e.detail.value.fit) - e.detail.value.rate*3.7,
+          });
         }
-        if(this.transportIndex == 1){
-          this.needCost = e.detail.cost*e.detail.quantity+e.detail.quantity*45*e.detail.fit;
-          this.profit = e.detail.price*e.detail.quantity*e.detail.rate - (e.detail.cost*e.detail.quantity+e.detail.quantity*45*e.detail.fit) - e.detail.rate*3.7;
+        if(this.data.transportIndex == 1){
+          this.setData({
+            needCost : e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*45*e.detail.value.fit,
+            profit : e.detail.value.price*e.detail.value.quantity*e.detail.value.rate - (e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*45*e.detail.value.fit) - e.detail.value.rate*3.7,
+          });
         }
-        if(this.transportIndex == 2){
-          this.needCost = e.detail.cost*e.detail.quantity+e.detail.quantity*55*e.detail.fit;
-          this.profit = e.detail.price*e.detail.quantity*e.detail.rate - (e.detail.cost*e.detail.quantity+e.detail.quantity*55*e.detail.fit) - e.detail.rate*3.7;
+        if(this.data.transportIndex == 2){
+          this.setData({
+            needCost : e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*55*e.detail.value.fit,
+            profit : e.detail.value.price*e.detail.value.quantity*e.detail.value.rate - (e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*55*e.detail.value.fit) - e.detail.value.rate*3.7,
+          });
         }
       }else{
-        if(this.transportIndex == 0){
-          this.needCost = e.detail.cost*e.detail.quantity+e.detail.quantity*10*((e.detail.long*e.detail.width*e.detail.height)/1000);
-          this.profit = e.detail.price*e.detail.quantity*e.detail.rate - e.detail.cost*e.detail.quantity+e.detail.quantity*10*((e.detail.long*e.detail.width*e.detail.height)/1000) - e.detail.rate*3.7;
+        if(this.data.transportIndex == 0){
+          this.setData({
+            needCost : e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*10*((e.detail.value.long*e.detail.value.width*e.detail.value.height)/6000),
+            profit : e.detail.value.price*e.detail.value.quantity*e.detail.value.rate - e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*10*((e.detail.value.long*e.detail.value.width*e.detail.value.height)/6000) - e.detail.value.rate*3.7,
+          });
         }
-        if(this.transportIndex == 1){
-          this.needCost = e.detail.cost*e.detail.quantity+e.detail.quantity*45*((e.detail.long*e.detail.width*e.detail.height)/6000);
-          this.profit = e.detail.price*e.detail.quantity*e.detail.rate - e.detail.cost*e.detail.quantity+e.detail.quantity*45*((e.detail.long*e.detail.width*e.detail.height)/6000) - e.detail.rate*3.7;
+        if(this.data.transportIndex == 1){
+          this.setData({
+            needCost : e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*45*((e.detail.value.long*e.detail.value.width*e.detail.value.height)/6000),
+            profit : e.detail.value.price*e.detail.value.quantity*e.detail.value.rate - e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*45*((e.detail.value.long*e.detail.value.width*e.detail.value.height)/6000) - e.detail.value.rate*3.7,
+          });
         }
-        if(this.transportIndex == 2){
-          this.needCost = e.detail.cost*e.detail.quantity+e.detail.quantity*55*((e.detail.long*e.detail.width*e.detail.height)/5000);
-          this.profit = e.detail.price*e.detail.quantity*e.detail.rate - e.detail.cost*e.detail.quantity+e.detail.quantity*55*((e.detail.long*e.detail.width*e.detail.height)/5000) - e.detail.rate*3.7;
+        if(this.data.transportIndex == 2){
+          this.setData({
+            needCost : e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*55*((e.detail.value.long*e.detail.value.width*e.detail.value.height)/5000),
+            profit : e.detail.value.price*e.detail.value.quantity*e.detail.value.rate - e.detail.value.cost*e.detail.value.quantity+e.detail.value.quantity*55*((e.detail.value.long*e.detail.value.width*e.detail.value.height)/5000) - e.detail.value.rate*3.7,
+          });
         }
       }
       this.setData({
         showOneButtonDialog: true
       });
-      console.log('needCost', needCost);
+    },
+    reset: function(e){
+      console.log("数据已经被重置了");
     },
     tapDialogButton(e) {
       this.setData({
           showOneButtonDialog: false
       })
-  },
+    },
+    /**
+* 用户点击右上角分享（index.js）
+*/
+    onShareAppMessage: function (ops) {
+      if (ops.from === 'button') {
+        // 来自页面内转发按钮
+        console.log(ops.target)
+      }
+      return {
+        title: '亚马逊计算器',
+        path: 'pages/index/index',  // 路径，传递参数到指定页面。
+        success: function (res) {
+          // 转发成功
+          console.log("转发成功:" + JSON.stringify(res));
+        },
+        fail: function (res) {
+          // 转发失败
+          console.log("转发失败:" + JSON.stringify(res));
+        }
+      }
+
+    }
   }
 });

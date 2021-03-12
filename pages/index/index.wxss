@@ -33,3 +33,6 @@
 .photo{
   margin-right:58px;
 }
+.ml{
+  margin-left: 70rpx;
+}

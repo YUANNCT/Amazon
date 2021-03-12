@@ -1,66 +1,66 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="inbox">
-    <mp-form title="亚马逊计算器" bindsubmit="submit">
-      <mp-cell prop="cost" title="产品成本" ext-class="">
-        <input data-field="cost" class="weui-label" placeholder="输入成本/元" />
-      </mp-cell>
-      <mp-cell prop="quantity" title="采购数量" ext-class="">
-        <input data-field="quantity" class="weui-label" placeholder="输入数量/个" />
-      </mp-cell>
-      <view class="weui-cell weui-cell_select">
-        <view class="weui-cell">
-          <view class="weui-label">运输方式</view>
-        </view>
-        <view class="weui-cell__hd">
-          <picker bindchange="bindTransportChange" value="{{transportIndex}}" range="{{transport}}">
-            <view class="weui-select">{{transport[transportIndex]}}</view>
-          </picker>
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_select">
-        <view class="weui-cell">
-          <view class="weui-label">称重方式</view>
-        </view>
-        <view class="weui-cell__hd">
-          <picker bindchange="bindWeightChange" value="{{weightIndex}}" range="{{weight}}">
-            <view class="weui-select">{{weight[weightIndex]}}</view>
-          </picker>
-        </view>
-      </view>
-      <view wx:if="{{weightIndex=='1'}}">
-        <mp-cell prop="long" title="长度" ext-class="">
-          <input data-field="long" class="weui-label" placeholder="输入长度/CM" />
-        </mp-cell>
-        <mp-cell prop="width" title="宽度" ext-class="">
-          <input data-field="width" class="weui-label" placeholder="输入宽度/CM" />
-        </mp-cell>
-        <mp-cell prop="height" title="高度" ext-class="">
-          <input data-field="height" class="weui-label" placeholder="输入高度/CM" />
-        </mp-cell>
-      </view>
-      <view wx:else>
-        <mp-cell prop="fit" title="重量" ext-class="">
-          <input data-field="long" class="weui-label" placeholder="输入重量/KG" />
-        </mp-cell>
-      </view>
-      <mp-cell prop="price" title="定价" ext-class="">
-        <input data-field="price" class="weui-label" placeholder="输入定价/美元" />
-      </mp-cell>
-      <mp-cell prop="rate" title="当前汇率" ext-class="">
-        <input data-field="rate" class="weui-label" placeholder="1美元=？元" />
-      </mp-cell>
-      <view class="buttongroup">
-        <button type="primary" class="calculate" form-type="submit">计算</button>
-        <button type="primary" class="zero" bindreset="clear">清零</button>
-      </view>
-    </mp-form>
-  </view>
-  
-  <mp-dialog title="计算结果" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{oneButton}}">
-    <view>所需成本为：{{needCost}}</view>
-    <view>所得利润为：{{profit}}</view>
-  </mp-dialog>
+	<view class="inbox">
+		<form bindsubmit="submit" bindreset='reset' title="亚马逊计算器">
+			<mp-cell prop="cost" title="产品成本" ext-class="">
+				<input data-field="cost" name="cost" class="weui-label ml" placeholder="输入成本/元" />
+			</mp-cell>
+			<mp-cell prop="quantity" title="采购数量" ext-class="">
+				<input data-field="quantity" name="quantity" class="weui-label ml" placeholder="输入数量/个" />
+			</mp-cell>
+			<view class="weui-cell weui-cell_select">
+				<view class="weui-cell">
+					<view class="weui-label">运输方式</view>
+				</view>
+				<view class="weui-cell__hd">
+					<picker bindchange="bindTransportChange" value="{{transportIndex}}" range="{{transport}}">
+						<view class="weui-select">{{transport[transportIndex]}}</view>
+					</picker>
+				</view>
+			</view>
+			<view class="weui-cell weui-cell_select">
+				<view class="weui-cell">
+					<view class="weui-label">称重方式</view>
+				</view>
+				<view class="weui-cell__hd">
+					<picker bindchange="bindWeightChange" value="{{weightIndex}}" range="{{weight}}">
+						<view class="weui-select">{{weight[weightIndex]}}</view>
+					</picker>
+				</view>
+			</view>
+			<view wx:if="{{weightIndex=='1'}}">
+				<mp-cell prop="long" title="长度" ext-class="">
+					<input data-field="long" name="long" class="weui-label ml" placeholder="输入长度/CM" />
+				</mp-cell>
+				<mp-cell prop="width" title="宽度" ext-class="">
+					<input data-field="width" name="width" class="weui-label ml" placeholder="输入宽度/CM" />
+				</mp-cell>
+				<mp-cell prop="height" title="高度" ext-class="">
+					<input data-field="height" name="height" class="weui-label ml" placeholder="输入高度/CM" />
+				</mp-cell>
+			</view>
+			<view wx:else>
+				<mp-cell prop="fit" title="重量" ext-class="">
+					<input data-field="fit" name="fit" class="weui-label ml" placeholder="输入重量/KG" />
+				</mp-cell>
+			</view>
+			<mp-cell prop="price" title="定价" ext-class="">
+				<input data-field="price" name="price" class="weui-label ml" placeholder="输入定价/美元" />
+			</mp-cell>
+			<mp-cell prop="rate" title="当前汇率" ext-class="">
+				<input data-field="rate" name="rate" class="weui-label ml" placeholder="1美元=？元" />
+			</mp-cell>
+			<view class="buttongroup">
+				<button type="primary" class="calculate" formType="submit">计算</button>
+				<button type="primary" class="zero" formType="reset">清零</button>
+			</view>
+		</form>
+	</view>
+
+	<mp-dialog title="计算结果" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{oneButton}}">
+		<view>所需成本为：{{needCost}}</view>
+		<view>所得利润为：{{profit}}</view>
+	</mp-dialog>
 </view>
 <!-- <view class="tabbar">
     <mp-icon icon="home" color="black" size="{{25}}" class="home"></mp-icon>
